@@ -1,0 +1,24 @@
+class UsersController < ApplicationController
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      flash[:success] = "Interests updated"
+      redirect_to root_path
+    else
+      flash[:alert] = "Interests could not be updated."
+      render :edit
+    end
+  end
+
+  private
+
+  def find_user
+    @user = current_user
+  end
+
+  def user_params
+    params.require(:user).permit(tag_ids: [])
+  end
+end
