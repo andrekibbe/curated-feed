@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # create routes for editing and updated user interests
   resources :users, only: [:edit, :update]
 
   devise_for :users, controllers: { registrations: "registrations" }

@@ -1,6 +1,6 @@
 <div class="col-md-8 col-md-offset-2">
   <h1>Please check your interests</h1>
-  <%= form_for (@user) do |f| %>
+  <%= form_for @user do |f| %>
 
     <strong>Interests:</strong>
     <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :title do |cb| %>
