@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
+
   def index
     @posts = Post.all
   end
@@ -17,6 +18,10 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
+  end
+
+  def create
     @post = Post.new post_params
     if @post.save
       flash[:success] = "Post was created successfully"
@@ -51,5 +56,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :description, tag_ids: [])
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
   end
 end
